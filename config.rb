@@ -5,6 +5,7 @@
 # Time.zone = "UTC"
 
 activate :blog do |blog|
+  set :mardown_engine, :kramdown
   # This will add a prefix to all links, template references and source paths
   # blog.prefix = "blog"
 
@@ -104,4 +105,4 @@ configure :build do
 end
 
 set :build_dit, 'tmp'
-
+activate :syntax

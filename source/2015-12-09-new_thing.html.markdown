@@ -1,0 +1,6 @@
+---
+title: new_thing
+date: 2015-12-09 15:26 UTC
+tags:
+---
+
