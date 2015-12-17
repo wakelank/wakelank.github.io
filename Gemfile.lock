@@ -46,8 +46,6 @@ GEM
     eventmachine (1.0.8)
     execjs (2.6.0)
     ffi (1.9.10)
-    font-awesome-middleman (4.1.1)
-      middleman-core (>= 3.0.0)
     git-version-bump (0.15.1)
     haml (4.0.7)
       tilt
@@ -159,7 +157,6 @@ DEPENDENCIES
   bitters
   bourbon
   builder (~> 3.0)
-  font-awesome-middleman (~> 4.1.1)
   middleman (~> 3.4.0)
   middleman-blog (~> 3.5.3)
   middleman-livereload

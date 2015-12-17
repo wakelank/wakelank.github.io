@@ -13,15 +13,5 @@
     </li>
   </ul>
 
-  <ul class="small-column">
-    <li><h5 class="heading">Tags</h5></li>
-    <li>
-      <ol>
-        <% blog.tags.each do |tag, articles| %>
-          <li><%= link_to "#{tag} (#{articles.size})", tag_path(tag) %></li>
-        <% end %>
-      </ol>
-    </li>
-  </ul>
 </footer>
 
