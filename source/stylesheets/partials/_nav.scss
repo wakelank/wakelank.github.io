@@ -1,25 +1,36 @@
 nav {
   @include outer-container;
-  border-bottom: 1px solid $base-border-color;
-  margin: em(30) 0;
+  margin-bottom: 20px;
 
+  .blog-title {
+    @include span-columns(6);
+    font-size: 1.4em;
+    font-weight: 700;
+    letterspacing: 4px;
+    text-transform: uppercase;
+    h1 {
+      margin-bottom: 5px;
+    }
+  }
+  .nav-icons {
+    @include span-columns(6);
+    @include omega();
+    text-align: right;
+  }
+  .nav-personal {
+    border-top: thin gray solid;
+    @include span-columns(12);
+    text-align: right;
+    li {
+      padding-left: 1em;
+    }
+  }
   ul {
     display: inline-block;
-    margin-bottom: em(10);
   }
   li {
     display: inline;
   }
 }
-.nav-links{
-  @include span-columns(3);
-  @include shift(6);
-  }
-.blog-title {
-  @include span-columns(3);
-  font-size: 1.4em;
-  font-weight: 700;
-  letterspacing: 4px;
-  text-transform: uppercase;
-}
+
 
