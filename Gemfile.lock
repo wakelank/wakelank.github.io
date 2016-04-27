@@ -156,10 +156,13 @@ PLATFORMS
 DEPENDENCIES
   bitters
   bourbon
-  builder (~> 3.0)
-  middleman (~> 3.4.0)
-  middleman-blog (~> 3.5.3)
+  builder
+  middleman
+  middleman-blog
   middleman-livereload
   middleman-syntax
   neat
   rack-contrib
+
+BUNDLED WITH
+   1.11.2
