@@ -14,11 +14,11 @@
     <link rel="alternate" href="http://blog.url.com/2015/12/16/capitalize-in-vim.html"/>
     <id>http://blog.url.com/2015/12/16/capitalize-in-vim.html</id>
     <published>2015-12-16T10:47:00-05:00</published>
-    <updated>2015-12-21T17:28:20-05:00</updated>
+    <updated>2016-04-28T17:14:17-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;I just discovered the the tilde, &lt;code&gt;~&lt;/code&gt;, in normal mode will switch the case of whatever letter the cursor is on.&lt;/p&gt;
+    <content type="html">&lt;p&gt;I just discovered the tilde &lt;code&gt;~&lt;/code&gt; in normal mode will switch the case of whatever letter the cursor is on.&lt;/p&gt;
 
 &lt;p&gt;Also &lt;code&gt;g~w&lt;/code&gt; will switch case on the word you're on, &lt;code&gt;g~g~&lt;/code&gt; will do the whole line.&lt;/p&gt;
 
