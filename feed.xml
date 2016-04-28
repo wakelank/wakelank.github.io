@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Blog Name</title>
+  <subtitle>Blog subtitle</subtitle>
+  <id>http://blog.url.com/</id>
+  <link href="http://blog.url.com/"/>
+  <link href="http://blog.url.com/feed.xml" rel="self"/>
+  <updated>2015-12-16T10:47:00-05:00</updated>
+  <author>
+    <name>Blog Author</name>
+  </author>
+  <entry>
+    <title>Switch case in Vim</title>
+    <link rel="alternate" href="http://blog.url.com/2015/12/16/capitalize-in-vim.html"/>
+    <id>http://blog.url.com/2015/12/16/capitalize-in-vim.html</id>
+    <published>2015-12-16T10:47:00-05:00</published>
+    <updated>2015-12-21T17:28:20-05:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;I just discovered the the tilde, &lt;code&gt;~&lt;/code&gt;, in normal mode will switch the case of whatever letter the cursor is on.&lt;/p&gt;
+
+&lt;p&gt;Also &lt;code&gt;g~w&lt;/code&gt; will switch case on the word you're on, &lt;code&gt;g~g~&lt;/code&gt; will do the whole line.&lt;/p&gt;
+
+&lt;p&gt;When you need an all caps word it might be easier just to type a lower case word, and then have Vim capitlize it for you after the fact.&lt;/p&gt;
+
+&lt;p&gt;What does it do with nubmers? Hold on a sec…123…nothing.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Array Nonsense</title>
+    <link rel="alternate" href="http://blog.url.com/2015/12/16/array-nonsense.html"/>
+    <id>http://blog.url.com/2015/12/16/array-nonsense.html</id>
+    <published>2015-12-16T07:29:00-05:00</published>
+    <updated>2015-12-21T17:28:20-05:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;I was working on a Tic-Tac-Toe game recently in Ruby. The one thing anyone can see about a Tic-Tac-Toe game in Ruby is that making an 3 x 3 array might just be a good place to start. Once could do this:&lt;/p&gt;
+
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;arr_boxy&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+      &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="kp"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;nil&lt;/span&gt; &lt;span class="p"&gt;],&lt;/span&gt;
+      &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="kp"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;nil&lt;/span&gt; &lt;span class="p"&gt;],&lt;/span&gt;
+      &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="kp"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;nil&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt;
+      &lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then you could access the top left space with &lt;code&gt;arr[0][0]&lt;/code&gt;, and the bottom right one with &lt;code&gt;arr[2][2]&lt;/code&gt;. All well and good, but it doesn't seem very Ruby. 
+This:&lt;/p&gt;
+
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;arr_one_liner&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;Array&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="no"&gt;Array&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;should get the same thing right? Sure look like they do:&lt;/p&gt;
+
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;arr_boxy&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;to_s&lt;/span&gt;
+&lt;span class="s2"&gt;"[[nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]"&lt;/span&gt;
+
+&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;arr_one_liner&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;to_s&lt;/span&gt;
+&lt;span class="s2"&gt;"[[nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]"&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;But check this out:&lt;/p&gt;
+
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;arr_boxy&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"X"&lt;/span&gt;
+&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;arr_boxy&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;to_s&lt;/span&gt;
+&lt;span class="s2"&gt;"[[nil, nil, nil], [&lt;/span&gt;&lt;span class="se"&gt;\"&lt;/span&gt;&lt;span class="s2"&gt;X&lt;/span&gt;&lt;span class="se"&gt;\"&lt;/span&gt;&lt;span class="s2"&gt;, nil, nil], [nil, nil, nil]]"&lt;/span&gt;
+
+&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;arr_one_liner&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"X"&lt;/span&gt;
+&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;arr_one_liner&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;to_s&lt;/span&gt;
+
+&lt;span class="s2"&gt;"[[nil, &lt;/span&gt;&lt;span class="se"&gt;\"&lt;/span&gt;&lt;span class="s2"&gt;X&lt;/span&gt;&lt;span class="se"&gt;\"&lt;/span&gt;&lt;span class="s2"&gt;, nil], [nil, &lt;/span&gt;&lt;span class="se"&gt;\"&lt;/span&gt;&lt;span class="s2"&gt;X&lt;/span&gt;&lt;span class="se"&gt;\"&lt;/span&gt;&lt;span class="s2"&gt;, nil], [nil, &lt;/span&gt;&lt;span class="se"&gt;\"&lt;/span&gt;&lt;span class="s2"&gt;X&lt;/span&gt;&lt;span class="se"&gt;\"&lt;/span&gt;&lt;span class="s2"&gt;, nil]]"&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is an example of a concept that I often run across in the first few chapters of coding books, but I used to skim through until I get to the code examples. But, as we can see here, it's an important concept. First a little breakdown of how that &lt;code&gt;arr_one_liner&lt;/code&gt; declaration works.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;arr = Array.new&lt;/code&gt; gives you an empty array.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;arr = Array.new(2)&lt;/code&gt; gives you an array of two elements, each one is &lt;code&gt;nil&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;arr = Array.new(2, "thing")&lt;/code&gt; gives you an array of two elements, the value of each one is "thing".&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;So
+4. &lt;code&gt;arr = Array.new(2(Array.new(3))&lt;/code&gt; give you an array of two elements, the value of each one is the same is example 2 up there.&lt;/p&gt;
+
+&lt;p&gt;The deal is that the example four makes only one array object of three elements in computer memory. Then it puts two pointers to this object in the outer array. The two arrays of three elements are acutally one array of three objects. Like if you write the address to someone's house two times. You have two addresses, but they point to the same house. If you paint the house indicated by the first address, the house indicated by the second address gets painted too, because they are the same house.&lt;/p&gt;
+
+&lt;p&gt;Each row in &lt;code&gt;arr_boxy&lt;/code&gt; is a unique object. Each row in &lt;code&gt;array_one_liner&lt;/code&gt; is a pointer to the same array, change one and you change all of them. That's what happened with:&lt;/p&gt;
+
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;arr_one_liner&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"X"&lt;/span&gt;
+&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;arr_one_liner&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;to_s&lt;/span&gt;
+
+&lt;span class="s2"&gt;"[[nil, &lt;/span&gt;&lt;span class="se"&gt;\"&lt;/span&gt;&lt;span class="s2"&gt;X&lt;/span&gt;&lt;span class="se"&gt;\"&lt;/span&gt;&lt;span class="s2"&gt;, nil], [nil, &lt;/span&gt;&lt;span class="se"&gt;\"&lt;/span&gt;&lt;span class="s2"&gt;X&lt;/span&gt;&lt;span class="se"&gt;\"&lt;/span&gt;&lt;span class="s2"&gt;, nil], [nil, &lt;/span&gt;&lt;span class="se"&gt;\"&lt;/span&gt;&lt;span class="s2"&gt;X&lt;/span&gt;&lt;span class="se"&gt;\"&lt;/span&gt;&lt;span class="s2"&gt;, nil]]"&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here's what I did:&lt;/p&gt;
+
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;arr_the_way&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
+&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;times&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="n"&gt;arr_the_way&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="no"&gt;Array&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;arr_the_way&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;to_s&lt;/span&gt;
+&lt;span class="s2"&gt;"[[nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]"&lt;/span&gt;
+&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;arr_the_way&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"X"&lt;/span&gt;
+
+&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;array_the_way&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;to_s&lt;/span&gt;
+&lt;span class="s2"&gt;"[[nil, nil, nil], [&lt;/span&gt;&lt;span class="se"&gt;\"&lt;/span&gt;&lt;span class="s2"&gt;X&lt;/span&gt;&lt;span class="se"&gt;\"&lt;/span&gt;&lt;span class="s2"&gt;, nil, nil], [nil, nil, nil]]"&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Because it goes through the loop three times, each &lt;code&gt;Array.new(3)&lt;/code&gt; is created as a unique object, not a pointer to the same object.&lt;/p&gt;
+
+</content>
+  </entry>
+  <entry>
+    <title>Open Source</title>
+    <link rel="alternate" href="http://blog.url.com/2015/12/10/open-source.html"/>
+    <id>http://blog.url.com/2015/12/10/open-source.html</id>
+    <published>2015-12-10T09:44:00-05:00</published>
+    <updated>2015-12-21T17:28:20-05:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;Contributing to open source is intimidating, but it is a key step on the path to coding rockstardom. I was lucky enough to be able to attend a meetup group where a pack of newbs went through the process together with some mentors walking around. But it actually wasn't that hard, and my team didn't even need the help of a mentor…except for having them select a series of beginner-appropriate projects.&lt;/p&gt;
+
+&lt;h1 id="finding-a-project-to-contribute-to"&gt;Finding a project to contribute to&lt;/h1&gt;
+
+&lt;p&gt;This is the hardest part. But it's actually not that hard. The good news is that in the pay-it-forward atmosphere of the open source community, more and more maintainers of open source projects are intentionally leaving some easy stuff for beginners to fix.  Here a a few things to try:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h3 id="search-gihub"&gt;Search Gihub.&lt;/h3&gt;
+    &lt;p&gt;Paste the following into the search bar at Github: &lt;code&gt;language:ruby state:open label:beginner is:public&lt;/code&gt;. The meaning is pretty self-explanitory. Make sure you change the &lt;code&gt;language&lt;/code&gt; to the language you are looking for. I just did this and got 95 results. 123 result for JavaScript, if that's your poison.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h3 id="documentation"&gt;Documentation:&lt;/h3&gt;
+    &lt;p&gt;Absolutely noting wrong with contributing documentation. It is a appreciated. If you've struggles with getting something installed or working on your particular set up, and were able to eventually get it going, write something up and add it to a pull request.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h3 id="let-the-cops-to-the-work"&gt;Let the cops to the work.&lt;/h3&gt;
+    &lt;p&gt;Run a linter like Rubocop on a repo, and it will tell you things to fix. Rubocop scans for bits of code that are suspiciously bug-like or that don't adhere to good coding style. Things like lines being more than 80 characters long, trailing whitespace, two blank lines when one will do. Ridiculously easy stuff to fix.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h3 id="codeclimate-score"&gt;CodeClimate score:&lt;/h3&gt;
+    &lt;p&gt;Similar to the above is CodeClimate. Look for repos with a CodeClimate badge. This will show a score between 0 and 4. Anyone would want a higher score. Run CodeClimate on a repo, and it will come back with a list of issues to fix. If you're able to fix one of them, submit the pull request, and it gets accepted, the repos CodeClimate score will go up, which will make the maintainer happy.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+  </entry>
+</feed>
