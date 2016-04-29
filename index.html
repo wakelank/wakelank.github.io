@@ -45,6 +45,49 @@
         <div class="articles">
   <ul>
       <li>
+        <h3><a href="/2016/04/29/go-easy-on-the-memory.html">Go Easy on the Memory</a></h3>
+        <h5>Apr 29</h5>
+        <p><h3 id="error-r14-memory-quota-exceeded">Error R14 (Memory quota exceeded)</h3>
+<p>I have an app on Heroku that has a user table of more than 10,000 records, and the business owner gave me some specs for a report he wanted.  I threw a method together than generated the report and worked great on my machine. But when I pushed it up to Heroku and ran it, it murdered my memory allowance.</p>
+
+<p><code>Error R14 (Memory quota exceeded)</code></p>
+
+<pre class="highlight ruby"><code>  <span class="k">def</span> <span class="nf">csv_users</span>
+    <span class="no">CSV</span><span class="p">.</span><span class="nf">generate</span> <span class="k">do</span> <span class="o">|</span><span class="n">csv</span><span class="o">|</span>
+      <span class="n">csv</span> <span class="o">&lt;&lt;</span> <span class="p">[</span><span class="s2">"name"</span><span class="p">,</span> <span class="s2">"email"</span><span class="p">,</span> <span class="s2">"blog"</span><span class="p">]</span>
+      <span class="no">User</span><span class="p">.</span><span class="nf">all</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">user</span><span class="o">|</span>
+          <span class="n">csv</span> <span class="o">&lt;&lt;</span> <span class="n">user</span><span class="p">.</span><span class="nf">report_data</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+</code></pre>
+
+<p>A smarter person would have been able to come up with an all SQL version, but I had to do some reggery-pokery on the user model to get that email and blog data. This method creates a user objects for every user in the database and <strong>keeps them in memory</strong> until it's finishes. There's your problem.</p>
+
+<h3 id="findinbatches-to-the-rescue">find_in_batches to the rescue</h3>
+<p>Turns out I'm not the first idiot in the world to have the problem. Ruby has <code>find_in_batches</code> for this very situation. <code>find_in_batches</code> will get records in chunks of 1000, do the thing with the thing, and then dump them from memory.</p>
+
+<pre class="highlight ruby"><code>  <span class="k">def</span> <span class="nf">csv_users</span>
+    <span class="no">CSV</span><span class="p">.</span><span class="nf">generate</span> <span class="k">do</span> <span class="o">|</span><span class="n">csv</span><span class="o">|</span>
+      <span class="n">csv</span> <span class="o">&lt;&lt;</span> <span class="p">[</span><span class="s2">"name"</span><span class="p">,</span> <span class="s2">"email"</span><span class="p">,</span> <span class="s2">"blog"</span><span class="p">]</span>
+      <span class="no">User</span><span class="p">.</span><span class="nf">all</span><span class="p">.</span><span class="nf">find_in_batches</span> <span class="k">do</span> <span class="o">|</span><span class="n">users</span><span class="o">|</span>
+        <span class="n">users</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">user</span><span class="o">|</span>
+          <span class="n">csv</span> <span class="o">&lt;&lt;</span> <span class="n">user</span><span class="p">.</span><span class="nf">report_data</span>
+        <span class="k">end</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+</code></pre>
+
+<p>I threw this up on Heroku and it worked fine, well within the memory limits. If you do this and you're still bumping up against the memory limit, you could try a smaller batch size:</p>
+
+<p><code>find_in_batches(batch_size: 100)</code>.</p>
+
+<p><code>find_in_batches</code> has a cousin, <code>find_each</code> that will do the same thing, but it will do the thing with thing on each individual record, and then clear it from memory.</p>
+
+</p>
+      </li>
+      <li>
         <h3><a href="/2015/12/16/capitalize-in-vim.html">Switch case in Vim</a></h3>
         <h5>Dec 16</h5>
         <p><p>I just discovered the tilde <code>~</code> in normal mode will switch the case of whatever letter the cursor is on.</p>
@@ -182,6 +225,7 @@ This:</p>
           <li><a href="/tags/open-source.html">open source</a></li>
           <li><a href="/tags/ruby.html">Ruby</a></li>
           <li><a href="/tags/vim.html">Vim</a></li>
+          <li><a href="/tags/heroku.html">Heroku</a></li>
       </ol>
     </li>
   </ul>
@@ -192,6 +236,10 @@ This:</p>
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+          <li>
+            <a href="/2016/04/29/go-easy-on-the-memory.html">Go Easy on the Memory</a>
+            <span>Apr 29</span>
+          </li>
           <li>
             <a href="/2015/12/16/capitalize-in-vim.html">Switch case in Vim</a>
             <span>Dec 16</span>
